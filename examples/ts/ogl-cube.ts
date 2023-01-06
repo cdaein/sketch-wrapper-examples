@@ -76,6 +76,11 @@ const settings: SketchSettings = {
   pixelRatio: window.devicePixelRatio,
   duration: 4000,
   filename: `${name}`,
+
+  attributes: {
+    // preserve buffer to export image
+    preserveDrawingBuffer: true,
+  },
 };
 
 sketchWrapper(sketch as Sketch, settings);
