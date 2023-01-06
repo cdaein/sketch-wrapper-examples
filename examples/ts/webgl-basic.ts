@@ -11,7 +11,7 @@ import type {
   WebGLProps,
 } from "@daeinc/sketch-wrapper";
 
-const name = "Webgl";
+const name = "webgl-basic";
 
 const vs = /** glsl */ `
   attribute vec2 a_position;

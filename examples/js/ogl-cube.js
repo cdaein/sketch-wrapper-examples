@@ -1,6 +1,6 @@
 import { sketchWrapper } from "@daeinc/sketch-wrapper";
 import { Camera, Transform, Box, Program, Mesh } from "ogl-typescript";
-const name = "OGL";
+const name = "ogl-cube";
 const vertex = /*glsl*/ `
   attribute vec3 position;
   uniform mat4 modelViewMatrix;

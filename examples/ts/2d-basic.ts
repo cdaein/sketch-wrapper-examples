@@ -7,7 +7,7 @@ import type {
 import { hsv2rgb } from "@daeinc/color";
 import { drawCircle } from "@daeinc/draw";
 
-const name = "Basic";
+const name = "2d-basic";
 
 const sketch = () => {
   // returned function is an animation render loop
