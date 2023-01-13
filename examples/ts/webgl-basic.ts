@@ -13,14 +13,14 @@ import type {
 
 const name = "webgl-basic";
 
-const vs = /** glsl */ `
+const vs = /* glsl */ `
   attribute vec2 a_position;
   void main() {
     gl_Position = vec4(a_position, 0, 1);
   }
 `;
 
-const fs = /** glsl */ `
+const fs = /* glsl */ `
   void main() {
     gl_FragColor = vec4(1, 1, 1, 1);
   }
@@ -43,7 +43,7 @@ const sketch = ({ gl }: WebGLProps) => {
 
   // in webgl context, use gl to call methods on the context
   return ({ gl, width, height, playhead }: WebGLProps) => {
-    gl.clearColor(0, 0, 0, 0);
+    gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // vertices for circle
@@ -71,7 +71,7 @@ const sketch = ({ gl }: WebGLProps) => {
 
 const settings: SketchSettings = {
   title: `Example: ${name}`,
-  background: `#999`,
+  background: `#333`,
   mode: "webgl",
   dimensions: [600, 600],
   pixelRatio: window.devicePixelRatio,
