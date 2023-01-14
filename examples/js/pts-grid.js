@@ -1,4 +1,4 @@
-import { sketchWrapper } from "@daeinc/sketch-wrapper";
+import sketchWrapper from "@daeinc/sketch-wrapper";
 import { CanvasForm, Pt, Bound, Create, Rectangle, Color } from "pts";
 const name = "pts-grid";
 const sketch = ({ context: ctx, width, height }) => {

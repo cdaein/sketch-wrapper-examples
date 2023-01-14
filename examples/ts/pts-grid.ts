@@ -1,4 +1,4 @@
-import { sketchWrapper } from "@daeinc/sketch-wrapper";
+import sketchWrapper from "@daeinc/sketch-wrapper";
 import type {
   Sketch,
   SketchProps,

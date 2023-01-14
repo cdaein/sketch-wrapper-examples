@@ -4,7 +4,7 @@
  * I'm not familiar with WebGL, so this is just a demonstration.
  */
 
-import { sketchWrapper } from "@daeinc/sketch-wrapper";
+import sketchWrapper from "@daeinc/sketch-wrapper";
 import type {
   Sketch,
   SketchSettings,

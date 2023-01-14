@@ -1,8 +1,9 @@
-import { OGLProps, sketchWrapper } from "@daeinc/sketch-wrapper";
+import sketchWrapper from "@daeinc/sketch-wrapper";
 import type {
   Sketch,
   SketchProps,
   SketchSettings,
+  OGLProps,
 } from "@daeinc/sketch-wrapper";
 import { Camera, Transform, Box, Program, Mesh } from "ogl-typescript";
 

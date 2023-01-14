@@ -1,4 +1,4 @@
-import { sketchWrapper } from "@daeinc/sketch-wrapper";
+import sketchWrapper from "@daeinc/sketch-wrapper";
 import { hsv2rgb } from "@daeinc/color";
 import { drawCircle } from "@daeinc/draw";
 const name = "2d-basic";

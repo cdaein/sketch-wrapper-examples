@@ -3,7 +3,7 @@
  *
  * I'm not familiar with WebGL, so this is just a demonstration.
  */
-import { sketchWrapper } from "@daeinc/sketch-wrapper";
+import sketchWrapper from "@daeinc/sketch-wrapper";
 const name = "webgl-basic";
 const vs = /* glsl */ `
   attribute vec2 a_position;
