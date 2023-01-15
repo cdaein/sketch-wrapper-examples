@@ -11,10 +11,12 @@ A collection of sketches that demonstrate the use of [`sketch-wrapper`](https://
 
 ## Outputs
 
-|             2d-basic             |             2d-resize              |             ogl-cube             |
-| :------------------------------: | :--------------------------------: | :------------------------------: |
-| [![2d basic](output/2d-basic.png)](./examples/ts/2d-basic.ts) | ![2d resize](output/2d-resize.png) | ![ogl cube](output/ogl-cube.png) |
+Click each image to see the TypeScript source code.
 
-|             pts-grid             |             two-basic              |              webgl-basic               |
-| :------------------------------: | :--------------------------------: | :------------------------------------: |
-| ![pts grid](output/pts-grid.png) | ![two basic](output/two-basic.png) | ![webgl basic](output/webgl-basic.png) |
+|                           2d-basic                            |                            2d-resize                             |                           ogl-cube                            |
+| :-----------------------------------------------------------: | :--------------------------------------------------------------: | :-----------------------------------------------------------: |
+| [![2d basic](output/2d-basic.png)](./examples/ts/2d-basic.ts) | [![2d resize](output/2d-resize.png)](./examples/ts/2d-resize.ts) | [![ogl cube](output/ogl-cube.png)](./examples/ts/ogl-cube.ts) |
+
+|                           pts-grid                            |                            two-basic                             |                              webgl-basic                               |
+| :-----------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| [![pts grid](output/pts-grid.png)](./examples/ts/pts-grid.ts) | [![two basic](output/two-basic.png)](./examples/ts/two-basic.ts) | [![webgl basic](output/webgl-basic.png)](./examples/ts/webgl-basic.ts) |
