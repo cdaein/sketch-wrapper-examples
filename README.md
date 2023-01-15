@@ -5,9 +5,11 @@ A collection of sketches that demonstrate the use of [`sketch-wrapper`](https://
 ## How to run
 
 1. Download or clone this repo to your machine.
+1. `cd` into the downloaded folder.
 1. Intall the dependencies by running `npm install` in your Terminal. You need to have Node.js installed on your computer.
-1. In the `examples` folder, there are both TypeScript and JavaScript sketches. JS sketches are compiled from TS. To run any of the sketches, update the `<script>` tag in `index.html` to point to a JS or TS sketh.
 1. To run the sketch, in the Terminal, run `npm start`. The repo uses Vite.js for dev server.
+1. Open the browser and go to the localhost. By default, it is `http://localhost:5173/`.
+1. In the `examples` folder, there are both TypeScript and JavaScript sketches. JS sketches are compiled from TS. To run any of the sketches, update the `<script>` tag in `index.html` to point to a JS or TS sketch.
 
 ## Outputs
 
