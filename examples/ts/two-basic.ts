@@ -100,7 +100,7 @@ const sketch = ({ canvas, width, height, pixelRatio }: SketchProps) => {
 const settings: SketchSettings = {
   title: `Example: ${name}`,
   dimensions: [600, 600],
-  pixelRatio: 2,
+  pixelRatio: window.devicePixelRatio,
   // duration: 10000,
   animate: true,
   filename: `${name}`,
