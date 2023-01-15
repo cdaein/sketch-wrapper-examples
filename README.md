@@ -13,7 +13,7 @@ A collection of sketches that demonstrate the use of [`sketch-wrapper`](https://
 
 |             2d-basic             |             2d-resize              |             ogl-cube             |
 | :------------------------------: | :--------------------------------: | :------------------------------: |
-| ![2d basic](output/2d-basic.png) | ![2d resize](output/2d-resize.png) | ![ogl cube](output/ogl-cube.png) |
+| [![2d basic](output/2d-basic.png)](./examples/ts/2d-basic.ts) | ![2d resize](output/2d-resize.png) | ![ogl cube](output/ogl-cube.png) |
 
 |             pts-grid             |             two-basic              |              webgl-basic               |
 | :------------------------------: | :--------------------------------: | :------------------------------------: |
