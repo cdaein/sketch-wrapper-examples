@@ -78,6 +78,10 @@ const settings: SketchSettings = {
   duration: 2000,
   filename: `${name}`,
   playFps: 12,
+  attributes: {
+    // add the attribute for file export
+    preserveDrawingBuffer: true,
+  } as WebGLContextAttributes,
 };
 
 sketchWrapper(sketch as Sketch, settings);

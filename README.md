@@ -15,6 +15,6 @@ A collection of sketches that demonstrate the use of [`sketch-wrapper`](https://
 | :------------------------------: | :--------------------------------: | :------------------------------: |
 | ![2d basic](output/2d-basic.png) | ![2d resize](output/2d-resize.png) | ![ogl cube](output/ogl-cube.png) |
 
-|             pts-grid             |             two-basic              |     |
-| :------------------------------: | :--------------------------------: | :-: |
-| ![pts grid](output/pts-grid.png) | ![two basic](output/two-basic.png) |     |
+|             pts-grid             |             two-basic              |              webgl-basic               |
+| :------------------------------: | :--------------------------------: | :------------------------------------: |
+| ![pts grid](output/pts-grid.png) | ![two basic](output/two-basic.png) | ![webgl basic](output/webgl-basic.png) |

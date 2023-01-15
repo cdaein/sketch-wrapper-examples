@@ -14,6 +14,8 @@ import { hsv2rgb } from "@daeinc/color";
 import { Group } from "two.js/src/group";
 import { Vector } from "two.js/src/vector";
 
+const name = "two-basic";
+
 interface Ball extends Group {
   destination: Vector;
 }
@@ -96,11 +98,12 @@ const sketch = ({ canvas, width, height, pixelRatio }: SketchProps) => {
 };
 
 const settings: SketchSettings = {
+  title: `Example: ${name}`,
   dimensions: [600, 600],
   pixelRatio: 2,
   // duration: 10000,
   animate: true,
-  filename: "two-basic",
+  filename: `${name}`,
 };
 
 sketchWrapper(sketch as Sketch, settings);
