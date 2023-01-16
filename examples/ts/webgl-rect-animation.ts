@@ -12,6 +12,8 @@ import type {
 
 const name = "webgl-rect-animation";
 
+type ShaderInfo = { type: number; id: string; code: string }[];
+
 const vs = /*glsl*/ `
   attribute vec2 aVertexPos;
   uniform vec2 uScalingFactor;
@@ -39,7 +41,48 @@ const fs = /*glsl*/ `
   }
 `;
 
-type ShaderInfo = { type: number; id: string; code: string }[];
+const compileShader = (
+  gl: WebGLRenderingContext,
+  id: string,
+  type: number,
+  code: string
+) => {
+  const shader = gl.createShader(type)!;
+  gl.shaderSource(shader, code);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.log(
+      `Error compiling ${
+        type === gl.VERTEX_SHADER ? "vertex" : "fragment}"
+      } shader:`
+    );
+    console.log(gl.getShaderInfoLog(shader));
+  }
+  return shader;
+};
+
+const buildShaderProgram = (
+  gl: WebGLRenderingContext,
+  shaderInfo: ShaderInfo
+) => {
+  const program = gl.createProgram()!;
+
+  shaderInfo.forEach((desc) => {
+    const shader = compileShader(gl, desc.id, desc.type, desc.code);
+    if (shader) {
+      gl.attachShader(program, shader);
+    }
+  });
+
+  gl.linkProgram(program);
+
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    console.log("Error linking shader program");
+    console.log(gl.getProgramInfoLog(program));
+  }
+
+  return program;
+};
 
 const sketch = ({ canvas, gl, width, height }: WebGLProps) => {
   const shaderSet: ShaderInfo = [
@@ -115,55 +158,13 @@ const sketch = ({ canvas, gl, width, height }: WebGLProps) => {
   };
 };
 
-const compileShader = (
-  gl: WebGLRenderingContext,
-  id: string,
-  type: number,
-  code: string
-) => {
-  const shader = gl.createShader(type)!;
-  gl.shaderSource(shader, code);
-  gl.compileShader(shader);
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.log(
-      `Error compiling ${
-        type === gl.VERTEX_SHADER ? "vertex" : "fragment}"
-      } shader:`
-    );
-    console.log(gl.getShaderInfoLog(shader));
-  }
-  return shader;
-};
-
-const buildShaderProgram = (
-  gl: WebGLRenderingContext,
-  shaderInfo: ShaderInfo
-) => {
-  const program = gl.createProgram()!;
-
-  shaderInfo.forEach((desc) => {
-    const shader = compileShader(gl, desc.id, desc.type, desc.code);
-    if (shader) {
-      gl.attachShader(program, shader);
-    }
-  });
-
-  gl.linkProgram(program);
-
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    console.log("Error linking shader program");
-    console.log(gl.getProgramInfoLog(program));
-  }
-
-  return program;
-};
-
 const settings: SketchSettings = {
   title: `Example: ${name}`,
   mode: "webgl",
   dimensions: [600, 600],
   duration: 4000,
-  playFps: 4,
+  playFps: 60,
+  exportFps: 90,
   filename: `${name}`,
   attributes: {
     preserveDrawingBuffer: true,
