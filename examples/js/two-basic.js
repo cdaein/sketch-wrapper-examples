@@ -5,6 +5,7 @@
 import sketchWrapper from "@daeinc/sketch-wrapper";
 import Two from "two.js";
 import { hsv2rgb } from "@daeinc/color";
+const name = "two-basic";
 const makeEye = (two, width, height) => {
     const ball = two.makeGroup();
     const eye = two.makeGroup();
@@ -40,6 +41,7 @@ const sketch = ({ canvas, width, height, pixelRatio }) => {
         type: Two.Types.canvas,
         width: width,
         height: height,
+        //@ts-ignore current two.js doesn't have ratio typed.
         ratio: pixelRatio,
         domElement: canvas,
     });
@@ -62,10 +64,11 @@ const sketch = ({ canvas, width, height, pixelRatio }) => {
     };
 };
 const settings = {
+    title: `Example: ${name}`,
     dimensions: [600, 600],
-    pixelRatio: 2,
+    pixelRatio: window.devicePixelRatio,
     // duration: 10000,
     animate: true,
-    filename: "two-basic",
+    filename: `${name}`,
 };
 sketchWrapper(sketch, settings);

@@ -72,6 +72,7 @@ const sketch = ({ canvas, width, height, pixelRatio }: SketchProps) => {
     type: Two.Types.canvas,
     width: width,
     height: height,
+    //@ts-ignore current two.js doesn't have ratio typed.
     ratio: pixelRatio,
     domElement: canvas,
   });

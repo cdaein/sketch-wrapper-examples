@@ -60,5 +60,9 @@ const settings = {
     duration: 2000,
     filename: `${name}`,
     playFps: 12,
+    attributes: {
+        // add the attribute for file export
+        preserveDrawingBuffer: true,
+    },
 };
 sketchWrapper(sketch, settings);

@@ -29,6 +29,31 @@ const fs = /*glsl*/ `
     gl_FragColor = uGlobalColor;
   }
 `;
+const compileShader = (gl, id, type, code) => {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, code);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+        console.log(`Error compiling ${type === gl.VERTEX_SHADER ? "vertex" : "fragment}"} shader:`);
+        console.log(gl.getShaderInfoLog(shader));
+    }
+    return shader;
+};
+const buildShaderProgram = (gl, shaderInfo) => {
+    const program = gl.createProgram();
+    shaderInfo.forEach((desc) => {
+        const shader = compileShader(gl, desc.id, desc.type, desc.code);
+        if (shader) {
+            gl.attachShader(program, shader);
+        }
+    });
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.log("Error linking shader program");
+        console.log(gl.getProgramInfoLog(program));
+    }
+    return program;
+};
 const sketch = ({ canvas, gl, width, height }) => {
     const shaderSet = [
         {
@@ -86,37 +111,13 @@ const sketch = ({ canvas, gl, width, height }) => {
         },
     };
 };
-const compileShader = (gl, id, type, code) => {
-    const shader = gl.createShader(type);
-    gl.shaderSource(shader, code);
-    gl.compileShader(shader);
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.log(`Error compiling ${type === gl.VERTEX_SHADER ? "vertex" : "fragment}"} shader:`);
-        console.log(gl.getShaderInfoLog(shader));
-    }
-    return shader;
-};
-const buildShaderProgram = (gl, shaderInfo) => {
-    const program = gl.createProgram();
-    shaderInfo.forEach((desc) => {
-        const shader = compileShader(gl, desc.id, desc.type, desc.code);
-        if (shader) {
-            gl.attachShader(program, shader);
-        }
-    });
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.log("Error linking shader program");
-        console.log(gl.getProgramInfoLog(program));
-    }
-    return program;
-};
 const settings = {
     title: `Example: ${name}`,
     mode: "webgl",
     dimensions: [600, 600],
     duration: 4000,
-    playFps: 4,
+    playFps: 60,
+    exportFps: 90,
     filename: `${name}`,
     attributes: {
         preserveDrawingBuffer: true,
