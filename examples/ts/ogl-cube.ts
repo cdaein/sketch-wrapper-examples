@@ -1,11 +1,17 @@
 import sketchWrapper from "@daeinc/sketch-wrapper";
 import type {
   Sketch,
-  SketchProps,
   SketchSettings,
-  OGLProps,
+  WebGLProps,
 } from "@daeinc/sketch-wrapper";
-import { Camera, Transform, Box, Program, Mesh } from "ogl-typescript";
+import {
+  Camera,
+  Transform,
+  Box,
+  Program,
+  Mesh,
+  Renderer,
+} from "ogl-typescript";
 
 const name = "ogl-cube";
 
@@ -35,7 +41,15 @@ const fragment = /* glsl */ `
   }
 `;
 
-const sketch = ({ oglContext: gl, oglRenderer: renderer, width }: OGLProps) => {
+const sketch = ({ canvas, width, height, pixelRatio }: WebGLProps) => {
+  const renderer = new Renderer({
+    canvas,
+    width,
+    height,
+    dpr: pixelRatio,
+  });
+  const gl = renderer.gl;
+
   const camera = new Camera(gl, { fov: 35 });
   camera.position.set(0, 0, 4);
 
@@ -50,7 +64,7 @@ const sketch = ({ oglContext: gl, oglRenderer: renderer, width }: OGLProps) => {
   mesh.setParent(scene);
 
   return {
-    render({ width, height, playhead, deltaTime }: OGLProps) {
+    render({ width, height, playhead, deltaTime }: WebGLProps) {
       gl.clearColor(0.54, 0.7, 0.81, 1);
 
       // mesh.rotation.y -= deltaTime * 0.001;
@@ -72,12 +86,13 @@ const sketch = ({ oglContext: gl, oglRenderer: renderer, width }: OGLProps) => {
 const settings: SketchSettings = {
   title: `Example: ${name}`,
   background: `#999`,
-  mode: "ogl",
+  mode: "webgl",
   dimensions: [600, 600],
   pixelRatio: window.devicePixelRatio,
-  duration: 4000,
+  duration: 3_000,
   filename: `${name}`,
-
+  exportFps: 24,
+  framesFormat: "gif",
   attributes: {
     // preserve buffer to export image
     preserveDrawingBuffer: true,

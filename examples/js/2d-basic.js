@@ -21,6 +21,11 @@ const settings = {
     dimensions: [600, 600],
     pixelRatio: window.devicePixelRatio,
     duration: 2000,
+    exportFps: 50,
+    framesFormat: "gif",
     filename: `${name}`,
+    attributes: {
+        willReadFrequently: true,
+    },
 };
 sketchWrapper(sketch, settings);

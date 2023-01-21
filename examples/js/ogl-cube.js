@@ -1,5 +1,5 @@
 import sketchWrapper from "@daeinc/sketch-wrapper";
-import { Camera, Transform, Box, Program, Mesh } from "ogl-typescript";
+import { Camera, Transform, Box, Program, Mesh, Renderer, } from "ogl-typescript";
 const name = "ogl-cube";
 const vertex = /*glsl*/ `
   attribute vec3 position;
@@ -26,7 +26,14 @@ const fragment = /* glsl */ `
     gl_FragColor = vec4(1.0, dxy, 1.0 - dyz, 1.0);
   }
 `;
-const sketch = ({ oglContext: gl, oglRenderer: renderer, width }) => {
+const sketch = ({ canvas, width, height, pixelRatio }) => {
+    const renderer = new Renderer({
+        canvas,
+        width,
+        height,
+        dpr: pixelRatio,
+    });
+    const gl = renderer.gl;
     const camera = new Camera(gl, { fov: 35 });
     camera.position.set(0, 0, 4);
     const scene = new Transform();
@@ -57,11 +64,13 @@ const sketch = ({ oglContext: gl, oglRenderer: renderer, width }) => {
 const settings = {
     title: `Example: ${name}`,
     background: `#999`,
-    mode: "ogl",
+    mode: "webgl",
     dimensions: [600, 600],
     pixelRatio: window.devicePixelRatio,
-    duration: 4000,
+    duration: 3_000,
     filename: `${name}`,
+    exportFps: 24,
+    framesFormat: "gif",
     attributes: {
         // preserve buffer to export image
         preserveDrawingBuffer: true,
