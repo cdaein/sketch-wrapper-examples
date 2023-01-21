@@ -11,8 +11,6 @@ A collection of sketches that demonstrate the use of [`sketch-wrapper`](https://
 1. Open the browser and go to the localhost. By default, it is `http://localhost:5173/`.
 1. In the `examples` folder, there are both TypeScript and JavaScript sketches. JS sketches are compiled from TS. To run any of the sketches, update the `<script>` tag in `index.html` to point to a JS or TS sketch.
 
-> Note: Currently, Vitejs prints source file missing warning when using `ogl-typescript` but it looks to be working fine. If you prefer a different dev server, use `npm run parcel` to use Parcel.
-
 ## Outputs
 
 Click each image to see the TypeScript source code.
